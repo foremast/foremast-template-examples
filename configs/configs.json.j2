@@ -1,0 +1,53 @@
+{
+    "app": {
+        "app_description": null,
+        "app_ssh_key": "{{ env }}_access",
+        "email": null,
+        "eureka_enabled": false,
+        "instance_profile": "{{ profile }}",
+        "instance_type": "m3.large"
+    },
+    "asg": {
+        "hc_type": "ELB",
+        "max_inst": 3,
+        "min_inst": 1,
+        "subnet_purpose": "internal",
+        "provider_healthcheck": {
+            "amazon": false
+        },
+        "scaling_policy": {}
+    },
+    "elb": {
+        "certificate": null,
+        "policies": null,
+        "health": {
+            "interval": 20,
+            "threshold": 2,
+            "timeout": 10,
+            "unhealthy_threshold": 5
+        },
+        "i_port": 8080,
+        "i_proto": "HTTP",
+        "lb_port": 80,
+        "lb_proto": "HTTP",
+        "subnet_purpose": "internal",
+        "target": "TCP:8080"
+    },
+    "qe": {
+    },
+    "regions": [
+        "us-east-1"
+    ],
+    "deploy_strategy": "highlander",
+    "security_group": {
+        "description": "Auto-Gen SG for {{ app }}",
+        "egress": "0.0.0.0/24",
+        "elb_extras": [],
+        "ingress": {
+        },
+        "instance_extras": ["default_sg"]
+    },
+    "dns": {
+        "ttl": 60
+    }
+}
