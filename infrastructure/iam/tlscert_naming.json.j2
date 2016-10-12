@@ -1,0 +1,14 @@
+{
+  "dev": {
+    "wildcard.example.com": "arn:aws:iam::{account}:server-certificate/{name}-2017-07-15"
+  },
+  "stage": {
+    "wildcard.example.com": "arn:aws:iam::{account}:server-certificate/{name}",
+    "service.example.com": "arn:aws:iam::{account}:server-certificate/{name}-service-2017-07-15",
+    "custom-name": "arn:aws:iam::{account}:server-certificate/{name}-custom-etc"
+  },
+  "prod": {
+    "wildcard.example.com": "arn:aws:iam::{account}:server-certificate/{name}",
+    "service.example.com": "arn:aws:iam::{account}:server-certificate/{name}-custom-etc"
+  }
+}
