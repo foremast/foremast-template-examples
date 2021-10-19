@@ -1,18 +1,32 @@
 {
     "app": {
         "app_description": null,
-        "app_ssh_key": "{{ env }}_access",
+        "approval_skip": false,
+        "approval_timeout": null,
         "email": null,
         "archaius_enabled": false,
+        "canary": false,
+        "custom_tags": {},
         "eureka_enabled": false,
         "instance_profile": "{{ profile }}",
-        "instance_type": "m3.large",
-        "lambda_environment": null,
+        "instance_type": "t3.micro",
+        "lambda_concurrency_limit": null,
+        "lambda_destinations": {},
+        "lambda_dlq": {},
+        "lambda_environment": {},
+        "lambda_filesystems": [],
+        "lambda_layers": [],
         "lambda_memory": "128",
         "lambda_role": null,
+        "lambda_provisioned_throughput": null,
+        "lambda_subnet_purpose": "internal",
+        "lambda_subnet_count": 1,
         "lambda_timeout": "30",
-        "canary": false,
-        "lambda_concurrency_limit": null
+        "lambda_tracing": {},
+        "cloudfunction_timeout": "60s",
+        "cloudfunction_memory_mb": "128",
+        "cloudfunction_max_instances": "0",
+        "cloudfunction_vpc_connector": null
     },
     "asg": {
         "hc_type": "ELB",
@@ -26,7 +40,8 @@
         "provider_healthcheck": {
             "amazon": false
         },
-        "scaling_policy": {}
+        "scaling_policy": {},
+        "scheduled_actions": []
     },
     "elb": {
         "certificate": null,
@@ -61,7 +76,7 @@
         "elb_extras": [],
         "ingress": {
         },
-        "instance_extras": ["default_sg"]
+        "instance_extras": []
     },
     "dns": {
         "ttl": 60,
@@ -72,6 +87,7 @@
     "s3": {
         "shared_bucket_master": false,
         "path": "/",
+        "bucket_name": "",
         "bucket_acl": "private",
         "bucket_policy": {},
         "content_metadata": [],
@@ -93,6 +109,10 @@
                 }
             }]
         },
+        "lifecycle": {
+            "enabled": false,
+            "lifecycle_rules": [{}]
+        },
         "logging": {
             "enabled": false,
             "logging_grants": [],
@@ -102,12 +122,21 @@
         "tagging": {
             "tags": {}
         },
+        "notification": {
+            "enabled": false,
+            "topic_configurations": [{}],
+            "queue_configurations": [{}],
+            "lambda_configurations": [{}]
+        },
+        "tagging": {
+            "tags": {}
+        },
         "versioning": {
             "enabled": false,
             "mfa_delete": "Disabled"
         },
         "website": {
-            "enabled": true,
+            "enabled": false,
             "index_suffix": "index.html",
             "error_document": "404.html"
         }
@@ -115,6 +144,14 @@
     "datapipeline": {
         "description": "",
         "activate_on_deploy": false,
+        "json_definition": {}
+    },
+    "stepfunction": {
+        "tracing": {
+            "enabled": false
+        },
+        "logging_configuration": {},
+        "statemachine_type": "STANDARD",
         "json_definition": {}
     }
 }
