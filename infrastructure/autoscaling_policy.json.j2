@@ -35,7 +35,11 @@
             "stepAdjustments":[
                {
                   "scalingAdjustment":{{ scalingAdjustment }},
+                  {% if operation == "decrease" %}
+                  "metricIntervalUpperBound":0
+                  {% else %}
                   "metricIntervalLowerBound":0
+                  {% endif %}
                }
             ]
          },
