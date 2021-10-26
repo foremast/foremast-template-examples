@@ -1,6 +1,11 @@
 #!/bin/bash
+
+# Define more userdata if needed to expose delivery variables at compute level
+#
+# This is useful to allow the applications to transform to their appropriate region
+# based on Environment Variables.
 export CLOUD_ENVIRONMENT={{ env }}
 export CLOUD_APP={{ app_name }}
-export EC2_REGION={{ region }}
+export CLOUD_REGION={{ region }}
 export CLOUD_CANARY={{ canary }}
 printenv | grep 'CLOUD\|EC2' | awk '$0="export "$0' >> /etc/cloud_env
